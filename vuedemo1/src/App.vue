@@ -1,14 +1,50 @@
 <template>
   <div id="app">
     {{ hello }}
+
+    <componentA v-for="(v1,k1) in objList" :key="key">
+
+    </componentA>
+
+    <ul>
+      <li v-for="(item,index) in list"> 
+        {{ item.name }} - {{item.price }}
+      </li>
+    </ul>
+
+    <ul>
+      <li v-for="(v1,k1,i1) in objList">
+          {{v1}} = {{k1}} = {{i1}}
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
+
+import componentA from './components/a.vue'
+
 export default {
+  components: {componentA},
   data () {
     return {
-      hello: 'world'
+      hello: '<span>world</span>',
+      list: [
+        {
+          name: 'apple',
+          price: 30
+        },
+        {
+          name: 'orange',
+          price: 40
+        }
+      ],
+      objList: {
+          name: 'apple',
+          price: 30,
+          color: 'red',
+          weight: 20
+      }
     }
   }
 }
